@@ -12,12 +12,16 @@ pipeline {
 				maven 'Maven'
 			}
 			steps {
-				powershell 'java -version'
-				powershell 'mvn -version'
-				powershell 'mvn clean package'
+				//powershell 'java -version'
+				//powershell 'mvn -version'
+				//powershell 'mvn clean package'
 
+				// maven build
+	      powershell label: '', script: 'mvn -f spring-boot-samples/spring-boot-sample-atmosphere/pom.xml clean package'
+      
 			}
 		}
+		/*
 		stage('Deploy') {
 			steps{
 				echo "Deploying"
@@ -25,5 +29,6 @@ pipeline {
 				
 			}
 		}
+		*/
 	}
 }
