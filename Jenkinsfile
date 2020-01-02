@@ -3,13 +3,13 @@ pipeline {
 	stages {
 		stage('Source') { 
 			steps {
-				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/prabhavagrawal/discoveri-happytrip.git']]])
+				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/RICHASHRI2211/jenkins2-course-spring-boot.git']]])
 			}
 		}
 		stage('Build') { 
 			tools {
-				jdk 'jdk8'
-				maven 'apache-maven-3.5.4'
+				jdk 'JDK8'
+				maven 'Maven'
 			}
 			steps {
 				powershell 'java -version'
@@ -21,7 +21,8 @@ pipeline {
 		stage('Deploy') {
 			steps{
 				echo "Deploying"
-				deploy adapters: [tomcat7(credentialsId: '98e9cbd9-106c-4efa-8238-9888f9bc8fc3', path: '', url: 'http://localhost:8085')], contextPath: 'happytrip', war: '**/*.war'
+				deploy adapters: [tomcat7(credentialsId: 'bcff19b9-c8db-470d-b20c-7c8157b5dcb4', path: '', url: 'http://localhost:8085')], contextPath: 'happytrip', war: '**/*.war'
+				
 			}
 		}
 	}
