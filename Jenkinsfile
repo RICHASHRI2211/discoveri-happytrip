@@ -4,20 +4,20 @@ pipeline {
 		stage('Source') { 
 			steps {
 				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/RICHASHRI2211/jenkins2-course-spring-boot.git']]])
-			}
-		}
+			      }
+				}
 		stage('Build') { 
 			tools {
 				jdk 'JDK8'
 				maven 'Maven'
-			}
+			      }
 			steps {
 
 				// maven build
 	    			  powershell label: '', script: 'mvn -f spring-boot-samples/spring-boot-sample-atmosphere/pom.xml clean package'
       
+			      }
 			}
-		}
 		
 		
 	//	stage('Deploy') {
@@ -29,18 +29,21 @@ pipeline {
 	//	}
 		
 		  stage('SonarQube analysis') {
- 			   withSonarQubeEnv('SonarQube') {
+			  steps{
+			  	withSonarQubeEnv('SonarQube') {
     				  sh 'mvn clean package sonar:sonar'
-    			} 
+				}			       } 
  		 }
 
 		stage('Email Notification'){
-			mail bcc: '', body: '''Dear Team,
+			steps{
+				mail bcc: '', body: '''Dear Team,
 
-			Build is given.
+				Build is given.
 
-			Regards,
-			Jenkins''', cc: '', from: '', replyTo: '', subject: 'Project happy trip - Build Status', to: 'richa.shrivastava@pratian.com'
+				Regards,
+				Jenkins''', cc: '', from: '', replyTo: '', subject: 'Project happy trip - Build Status', to: 'richa.shrivastava@pratian.com'
+			   }
 		}
 		
 	}
