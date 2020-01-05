@@ -12,12 +12,9 @@ pipeline {
 				maven 'Maven'
 			}
 			steps {
-				//powershell 'java -version'
-				//powershell 'mvn -version'
-				//powershell 'mvn clean package'
 
 				// maven build
-	      powershell label: '', script: 'mvn -f spring-boot-samples/spring-boot-sample-atmosphere/pom.xml clean package'
+	    			  powershell label: '', script: 'mvn -f spring-boot-samples/spring-boot-sample-atmosphere/pom.xml clean package'
       
 			}
 		}
@@ -31,6 +28,12 @@ pipeline {
 	//		}
 	//	}
 		
+		  stage('SonarQube analysis') {
+ 			   withSonarQubeEnv('SonarQube') {
+    				  sh 'mvn clean package sonar:sonar'
+    			} 
+ 		 }
+
 		stage('Email Notification'){
 			mail bcc: '', body: '''Dear Team,
 
