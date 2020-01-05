@@ -22,6 +22,7 @@ pipeline {
 			}
 		}
 		
+		
 	//	stage('Deploy') {
 	//		steps{
 	//			echo "Deploying"
@@ -29,6 +30,15 @@ pipeline {
 	//			
 	//		}
 	//	}
+		
+		stage('Email Notification'){
+			mail bcc: '', body: '''Dear Team,
+
+			Build is given.
+
+			Regards,
+			Jenkins''', cc: '', from: '', replyTo: '', subject: 'Project happy trip - Build Status', to: 'richa.shrivastava@pratian.com'
+		}
 		
 	}
 }
