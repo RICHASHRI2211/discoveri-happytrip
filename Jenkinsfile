@@ -29,9 +29,12 @@ pipeline {
 		
 		  stage('SonarQube analysis') {
 			  steps{
+				def mvnHome = tool name: 'Maven', type 'maven'
 			  	withSonarQubeEnv('SonarQube') {
-    				  sh 'mvn clean package sonar:sonar'
-				}			       } 
+    				//sh 'mvn clean package sonar:sonar'
+				sh "$(mvnHome)/bin/mvn/ sonar:sonar"
+				}	
+			  } 
  		 }
 
 		stage('Email Notification'){
