@@ -20,13 +20,13 @@ pipeline {
 			}
 		
 		
-	//	stage('Deploy') {
-	//		steps{
-	//			echo "Deploying"
-	//			//deploy adapters: [tomcat7(credentialsId: 'bcff19b9-c8db-470d-b20c-7c8157b5dcb4', path: '', url: 'http://localhost:8085')], contextPath: 'happytrip', war: '**/*.war'
-	//			
-	//		}
-	//	}
+		stage('Deploy') {
+			steps{
+				echo "Deploying"
+				deploy adapters: [tomcat7(credentialsId: 'bcff19b9-c8db-470d-b20c-7c8157b5dcb4', path: '', url: 'http://localhost:8085')], contextPath: 'happytrip', war: '**/*.war'
+				
+			}
+		}
 		
 		  stage('SonarQube analysis') {
 			  steps{
