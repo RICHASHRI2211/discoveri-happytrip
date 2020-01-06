@@ -31,11 +31,15 @@ pipeline {
 			  
 
 				  steps{
-				  
-  					  withSonarQubeEnv('SonarQube') { 
-    					  //bat "${scannerHome}/bin/sonar-scanner.bat" 
-				         sh 'mvn sonar:sonar'
+					  script{
+					   def scannerHome = tool 'SonarQubeScanner';
+						  withSonarQubeEnv('SonarQube') { 
+    					 bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.host.url=http:\"\"localhost:9000 -Dsonar.projectName=HappyTrip -Dsonar.projectVersion=${currentBuild.number} -Dsonar.projectKey=HappyTrip:app -Dsonar.sources=. -Dsonar.java.binaries=."
+					//bat "${scannerHome}/bin/sonar-scanner.bat" 
+				         //sh 'mvn sonar:sonar'
 					  }
+					  }
+  					 
 							
 			  } 
  		 }
