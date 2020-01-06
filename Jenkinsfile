@@ -20,15 +20,8 @@ pipeline {
 			}
 		
 		
-		stage('SonarQube analysis'){
-		      steps{
-			  withSonarQubeEnv(installationName: 'SonarQube') {
-				  sh 'mvn sonar:sonar'
-                                                }
-		      }
+
 		
-		}
-		/*
 		 stage('SonarQube analysis') {
 			  
 
@@ -47,7 +40,7 @@ pipeline {
 							
 			  } 
  		 }
-		 */
+		 
 		
 		stage('Deploy') {
 			steps{
