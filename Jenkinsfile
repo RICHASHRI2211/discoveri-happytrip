@@ -30,11 +30,9 @@ pipeline {
    		  
 					//bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.host.url=http:\"\"localhost:9000 -Dsonar.projectName=HappyTrip -Dsonar.projectVersion=${currentBuild.number} -Dsonar.projectKey=HappyTrip:app -Dsonar.sources=. -Dsonar.java.binaries=."
 					//bat "${scannerHome}/bin/sonar-scanner.bat" 
-				        bat 'mvn sonar:sonar'
-					  
-							 
-  -Dsonar.host.url=http://localhost:9000 
-  -Dsonar.login=4f8c5aff22468b099205865c8dc7ee06b6ffcd09
+				        bat 'mvn sonar:sonar'						 
+ 					 Dsonar.host.url=http://localhost:9000 
+					  Dsonar.login=4f8c5aff22468b099205865c8dc7ee06b6ffcd09
 					  }
   					 
 							
