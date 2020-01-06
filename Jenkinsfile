@@ -19,22 +19,15 @@ pipeline {
 			      }
 			}
 		
-		
-		stage('Deploy') {
-			steps{
-				echo "Deploying"
-				deploy adapters: [tomcat7(credentialsId: 'bcff19b9-c8db-470d-b20c-7c8157b5dcb4', path: '', url: 'http://localhost:8085')], contextPath: 'happytrip', war: '**/*.war'
-				}
-		}
-		
-		  stage('SonarQube analysis') {
+		 stage('SonarQube analysis') {
 			  
 
-				  steps{
-					  script{
+			  steps{
+				script{
 					   def scannerHome = tool 'SonarQubeScanner'
 						  withSonarQubeEnv('SonarQube') { 
-    							   bat "${scannerHome}/bin/sonar-scanner.bat" 
+    							   bat "${scannerHome}/bin/sonar-scanner"  
+							  
 					// bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.host.url=http:\"\"localhost:9000 -Dsonar.projectName=HappyTrip -Dsonar.projectVersion=${currentBuild.number} -Dsonar.projectKey=HappyTrip:app -Dsonar.sources=. -Dsonar.java.binaries=."
 					//bat "${scannerHome}/bin/sonar-scanner.bat" 
 				         //sh 'mvn sonar:sonar'
@@ -44,6 +37,15 @@ pipeline {
 							
 			  } 
  		 }
+		
+		stage('Deploy') {
+			steps{
+				echo "Deploying"
+				deploy adapters: [tomcat7(credentialsId: 'bcff19b9-c8db-470d-b20c-7c8157b5dcb4', path: '', url: 'http://localhost:8085')], contextPath: 'happytrip', war: '**/*.war'
+				}
+		}
+		
+
 
 		stage('Email Notification'){
 			steps{
