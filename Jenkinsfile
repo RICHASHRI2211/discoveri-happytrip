@@ -29,17 +29,12 @@ pipeline {
 		
 		  stage('SonarQube analysis') {
 			  
-				  environment {
-				  	scannerHome = tool 'SonarQubeScanner';
-				  }
+
 				  steps{
 				  
   					  withSonarQubeEnv('SonarQube') { 
-    					  bat "${scannerHome}/bin/sonar-scanner.bat" 
-					  
-				  //def mvnHome = tool name: 'Maven', type 'maven'
-			  	//withSonarQubeEnv('SonarQube') {
-    				//sh 'mvn clean package sonar:sonar'
+    					  //bat "${scannerHome}/bin/sonar-scanner.bat" 
+				         sh 'mvn clean package sonar:sonar'
 					  }
 							
 			  } 
