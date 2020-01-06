@@ -32,7 +32,7 @@ pipeline {
 				def mvnHome = tool name: 'Maven', type 'maven'
 			  	withSonarQubeEnv('SonarQube') {
     				//sh 'mvn clean package sonar:sonar'
-				sh "$(mvnHome)/bin/mvn/ sonar:sonar"
+					sh "${mvnHome}/bin/mvn/ sonar:sonar"
 				}	
 			  } 
  		 }
