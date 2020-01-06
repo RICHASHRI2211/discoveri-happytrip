@@ -28,7 +28,7 @@ pipeline {
 		}
 		
 		  stage('SonarQube analysis') {
-			  steps{
+			 
 					  def scannerHome = tool 'SonarQubeScanner';
   					  withSonarQubeEnv('SonarQube') { 
     					  bat "${SonarQubeScanner}/bin/sonar-scanner.bat" 
@@ -37,7 +37,7 @@ pipeline {
 			  	//withSonarQubeEnv('SonarQube') {
     				//sh 'mvn clean package sonar:sonar'
 				
-							}	
+							
 			  } 
  		 }
 
