@@ -34,7 +34,7 @@ pipeline {
 				  
   					  withSonarQubeEnv('SonarQube') { 
     					  //bat "${scannerHome}/bin/sonar-scanner.bat" 
-				         sh 'mvn clean package sonar:sonar'
+				         sh 'mvn sonar:sonar'
 					  }
 							
 			  } 
