@@ -30,7 +30,7 @@ pipeline {
 					    scannerHome = tool 'SonarQubeScanner'
 				}
 						  withSonarQubeEnv('SonarQube') { 
-   		  					bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.host.url=http:\"\"localhost:9000 -Dsonar.projectName=SonarProjectName -Dsonar.projectVersion=${currentBuild.number} -Dsonar.projectKey=SonarProjectKey -Dsonar.sources=. -Dsonar.java.binaries=."
+   		  					bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.host.url=http:\"\"localhost:9000 -Dsonar.projectName=Project_HappyTrip -Dsonar.projectVersion=${currentBuild.number} -Dsonar.projectKey=Project_HappyTrip:app -Dsonar.sources=. -Dsonar.java.binaries=."
 							  
 					//bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.host.url=http:\"\"localhost:9000 -Dsonar.projectName=HappyTrip -Dsonar.projectVersion=${currentBuild.number} -Dsonar.projectKey=HappyTrip:app -Dsonar.sources=. -Dsonar.java.binaries=."
 					//bat "${scannerHome}/bin/sonar-scanner.bat" 
