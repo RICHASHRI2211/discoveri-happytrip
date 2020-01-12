@@ -20,6 +20,7 @@ pipeline {
 			}
 		
 		
+		/*
 
 		
 		 stage('SonarQube analysis') {
@@ -62,6 +63,6 @@ pipeline {
 			   }
 		}
 		*/
-		
+		*/
 	}
 }
