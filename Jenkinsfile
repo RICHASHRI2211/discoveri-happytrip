@@ -50,7 +50,7 @@ pipeline {
 		}
 		
 
-
+		/*
 		stage('Email Notification'){
 			steps{
 				mail bcc: '', body: '''Dear Team,
@@ -61,6 +61,7 @@ pipeline {
 				Jenkins''', cc: '', from: '', replyTo: '', subject: 'Project happy trip - Build Status', to: 'richa.shrivastava@pratian.com'
 			   }
 		}
+		*/
 		
 	}
 }
